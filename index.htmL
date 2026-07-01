@@ -1,0 +1,821 @@
+九一LWS
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2022届初中毕业典礼</title>
+
+    <!-- ============================================================
+    配置区域 —— 你可以根据需要修改以下变量
+    ============================================================ -->
+
+    <style>
+        /* ===================== 全局样式 ===================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #fdf6e3 0%, #f5e6d3 30%, #f0d5d0 60%, #e8d0d8 100%);
+            padding: 20px;
+            background-attachment: fixed;
+        }
+
+        /* ===================== 主容器 ===================== */
+        .container {
+            width: 100%;
+            max-width: 560px;
+            background: rgba(255, 255, 255, 0.70);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 48px;
+            padding: 40px 32px 48px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08), 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.60);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===================== 装饰光晕 ===================== */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -60%;
+            left: -40%;
+            width: 180%;
+            height: 180%;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 215, 150, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===================== 顶部装饰 ===================== */
+        .header-icon {
+            text-align: center;
+            font-size: 52px;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.2;
+        }
+
+        .header-icon span {
+            display: inline-block;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* ===================== 标题 ===================== */
+        .title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #3d2a1f;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #8a7a6e;
+            letter-spacing: 6px;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+
+        /* ===================== 分割线 ===================== */
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #e8b89d, #d4a08a);
+            margin: 0 auto 28px;
+            border-radius: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===================== 表单 ===================== */
+        .form-group {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #4d3a2e;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 16px;
+            border: 2px solid rgba(200, 180, 168, 0.30);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.60);
+            outline: none;
+            transition: all 0.25s ease;
+            color: #2d1f16;
+            font-weight: 500;
+        }
+
+        .form-group input:focus {
+            border-color: #d4a08a;
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 0 0 6px rgba(212, 160, 138, 0.12);
+        }
+
+        .form-group input::placeholder {
+            color: #b8aaa0;
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        /* ===================== 按钮 ===================== */
+        .btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #e8b89d, #d4a08a);
+            color: #fff;
+            letter-spacing: 2px;
+            box-shadow: 0 6px 24px rgba(212, 160, 138, 0.30);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 32px rgba(212, 160, 138, 0.40);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 16px rgba(212, 160, 138, 0.25);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #b8c4c9, #9aaeb6);
+            box-shadow: 0 6px 24px rgba(154, 174, 182, 0.25);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 10px 32px rgba(154, 174, 182, 0.35);
+        }
+
+        .btn-qq {
+            background: linear-gradient(135deg, #4d8bf7, #2b6ed7);
+            box-shadow: 0 6px 24px rgba(43, 110, 215, 0.30);
+        }
+
+        .btn-qq:hover {
+            box-shadow: 0 10px 32px rgba(43, 110, 215, 0.40);
+        }
+
+        /* ===================== 错误提示 ===================== */
+        .error-msg {
+            color: #d45a5a;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+            min-height: 22px;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .error-msg.success {
+            color: #4caf84;
+        }
+
+        /* ===================== 主内容（认证后显示） ===================== */
+        #mainContent {
+            display: none;
+            animation: fadeUp 0.6s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-section {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 24px;
+        }
+
+        .welcome-section .greeting {
+            font-size: 22px;
+            font-weight: 700;
+            color: #3d2a1f;
+        }
+
+        .welcome-section .greeting .name-highlight {
+            color: #d4a08a;
+            background: linear-gradient(135deg, #e8b89d, #d4a08a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-section .date-badge {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 20px;
+            background: rgba(212, 160, 138, 0.15);
+            border-radius: 40px;
+            font-size: 14px;
+            color: #8a6a5a;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .welcome-section .date-badge i {
+            font-style: normal;
+            margin-right: 4px;
+        }
+
+        /* ===================== 功能卡片 ===================== */
+        .feature-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+            margin-top: 6px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 20px 22px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.60);
+            transition: all 0.25s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.75);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-card .card-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #3d2a1f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card .card-title .emoji {
+            font-size: 22px;
+        }
+
+        .feature-card .card-desc {
+            font-size: 14px;
+            color: #7a6a5e;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .feature-card .btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+        }
+
+        /* ===================== 建议表单 ===================== */
+          .suggest-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 15px;
+            border: 2px solid rgba(200, 180, 168, 0.30);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.60);
+            outline: none;
+            transition: all 0.25s ease;
+            color: #2d1f16;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 80px;
+            line-height: 1.6;
+        }
+
+        .suggest-form textarea:focus {
+            border-color: #d4a08a;
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 0 0 6px rgba(212, 160, 138, 0.10);
+        }
+
+        .suggest-form textarea::placeholder {
+            color: #b8aaa0;
+            font-weight: 400;
+        }
+
+        .suggest-form .btn {
+            margin-top: 12px;
+            padding: 14px;
+            font-size: 16px;
+        }
+
+        .suggest-form .form-footnote {
+            font-size: 13px;
+            color: #b0a098;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* ===================== 认证页面 ===================== */
+        #authForm {
+            position: relative;
+            z-index: 1;
+        }
+
+        #authForm .form-group:last-of-type {
+            margin-bottom: 22px;
+        }
+
+        /* ===================== 底部 ===================== */
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #c0b0a6;
+            margin-top: 24px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+            border-top: 1px solid rgba(200, 180, 168, 0.20);
+            padding-top: 20px;
+        }
+
+        /* ===================== 响应式 ===================== */
+        @media (max-width: 500px) {
+            .container {
+                padding: 28px 18px 32px;
+                border-radius: 32px;
+            }
+
+            .title {
+                font-size: 24px;
+            }
+
+            .subtitle {
+                font-size: 13px;
+                letter-spacing: 4px;
+            }
+
+            .header-icon {
+                font-size: 40px;
+            }
+
+            .feature-card {
+                padding: 16px 18px 18px;
+            }
+
+            .btn {
+                padding: 14px;
+                font-size: 16px;
+            }
+
+            .form-group input {
+                padding: 12px 16px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .container {
+                padding: 20px 14px 24px;
+                border-radius: 24px;
+            }
+
+            .title {
+                font-size: 20px;
+            }
+
+            .welcome-section .greeting {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ==================== 顶部图标 ==================== -->
+        <div class="header-icon">
+            <span>🎓</span>
+        </div>
+
+        <!-- ==================== 标题 ==================== -->
+        <h1 class="title">2022届 · 初中毕业典礼</h1>
+        <p class="subtitle">青春不散场 · 梦想再起航</p>
+        <div class="divider"></div>
+
+        <!-- ============================================================
+        认证页面
+        ============================================================ -->
+        <div id="authPage">
+            <form id="authForm" autocomplete="off">
+                <div class="form-group">
+                    <label for="realName">👤 真实姓名</label>
+                    <input
+                    type="text"
+                    id="realName"
+                    placeholder="请输入你的真实姓名"
+                    required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="verifyCode">🔑 校验码</label>
+                    <input
+                    type="text"
+                    id="verifyCode"
+                    placeholder="请输入校验码"
+                    required
+                    />
+                </div>
+
+                <button type="submit" class="btn">✨ 验证身份</button>
+                <div id="authError" class="error-msg"></div>
+            </form>
+        </div>
+
+        <!-- ============================================================
+        主内容（认证成功后显示）
+        ============================================================ -->
+        <div id="mainContent">
+
+            <!-- 欢迎区 -->
+            <div class="welcome-section">
+                <div class="greeting">
+                    🌟 欢迎你，<span class="name-highlight" id="displayName">同学</span>！
+                </div>
+                <div class="date-badge">
+                    <i>📅</i> 2026 年 7 月 1 日 · 毕业典礼
+                </div>
+            </div>
+
+            <!-- 功能卡片 -->
+            <div class="feature-grid">
+
+                <!-- QQ 群卡片 -->
+                <div class="feature-card">
+                    <div class="card-title">
+                        <span class="emoji">💬</span> 加入 QQ 群
+                    </div>
+                    <div class="card-desc">
+                        与同学们重聚，分享毕业喜悦，聊聊未来计划。
+                    </div>
+                    <a
+                    href="https://qun.qq.com/universal-share/share?ac=1&authKey=FIfc2sYA1AEnlGJgmysWOTpniUlTdjsalKgypwAj8CQLa%2FxLEsDRran0R8rOyQuw&busi_data=eyJncm91cENvZGUiOiI5MjM4NzAzODQiLCJ0b2tlbiI6Inp3dXl4VVNuNDhuTHdTbmlDU0E4SVRGN1dKR2JGT2UydklEWkc0N1VYdks4YnNna1hMWWtab0t6Si8yKzJFTk0iLCJ1aW4iOiIxNjI0NTA0ODI0In0%3D&data=XIndcpfoOZHKOLP1h7ZAwneDptUhqORhIk3lr0ldShVvJzedE8NygBm0OyBqw2bcxfCOhKO6-sL3L5iihOnD2w&svctype=4&tempid=h5_group_info"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-qq"
+                    style="display:block; text-align:center; text-decoration:none;"
+                    >
+                    📱 点击加入 QQ 群
+                </a>
+            </div>
+
+            <!-- 建议卡片 -->
+            <div class="feature-card">
+                <div class="card-title">
+                    <span class="emoji">✍️</span> 留下你的建议
+                </div>
+                <div class="card-desc">
+                    对毕业典礼、同学聚会或未来活动有任何想法？告诉我们吧！
+                </div>
+
+                <form class="suggest-form" id="suggestForm">
+                    <textarea
+                    id="suggestContent"
+                    placeholder="写写你的建议或想对同学们说的话…"
+                    required
+                ></textarea>
+                <button type="submit" class="btn btn-secondary">💌 提交建议</button>
+                <div id="suggestFeedback" class="error-msg" style="margin-top:10px;"></div>
+                <div class="form-footnote">
+                    🙌 你的每一条建议都很珍贵
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        2022 届 · 永远的少年
+    </div>
+</div>
+
+</div>
+
+<!-- ============================================================
+JavaScript 逻辑
+============================================================ -->
+<script>
+    (function() {
+        'use strict';
+
+        // ======================== 配置 ========================
+
+        /** 校验码（固定） */
+        const VALID_CODE = 'BMD-2022_54808cea09a6689526db261713107c58';
+
+        /** 白名单（所有真实姓名） */
+        const WHITELIST = [
+            '陈全德', '陈筱雅', '陈一帆', '崔淑涵',
+            '巩德', '巩茂田', '巩舒琪', '巩伊琳',
+            '韩昌丽', '韩佳珍', '韩俊逸', '韩正扬',
+            '郇志颐', '郇志影',
+            '李王帅', '李修瑞', '李雨晨',
+            '刘丕勇', '刘靖瑶', '刘茂威', '刘振',
+            '马慧', '马娜', '马文睿', '马新超',
+            '毛泽',
+            '石兴上',
+            '宋笃妍',
+            '谭馨玥',
+            '王靖箫', '王勤渊', '王瑞平', '王子安', '王紫轩',
+            '吴安贝', '吴加豪',
+            '郗鲁豫',
+            '夏蕊',
+            '徐圣志',
+            '张明智', '张诗雨', '张雅璇', '张毅', '张梓萱',
+            '朱新傲',
+            '左俊辉', '左清瑞'
+        ];
+
+        /** 建议提交目标（使用 formsubmit.co 中转） */
+        const SUGGEST_EMAIL = '1624504824@qq.com'; // ← 请替换为你的真实邮箱
+
+        // ======================== DOM 引用 ========================
+
+        const authPage = document.getElementById('authPage');
+        const mainContent = document.getElementById('mainContent');
+        const authForm = document.getElementById('authForm');
+        const realNameInput = document.getElementById('realName');
+        const verifyCodeInput = document.getElementById('verifyCode');
+        const authError = document.getElementById('authError');
+        const displayName = document.getElementById('displayName');
+
+        const suggestForm = document.getElementById('suggestForm');
+        const suggestContent = document.getElementById('suggestContent');
+        const suggestFeedback = document.getElementById('suggestFeedback');
+
+        // ======================== 工具函数 ========================
+
+        /** 去首尾空格，中间空格保留 */
+        function trimName(str) {
+            return str.trim();
+        }
+
+        /** 校验姓名是否在白名单中（忽略大小写，但保留原样显示） */
+        function isNameValid(inputName) {
+            const trimmed = trimName(inputName);
+            if (!trimmed) return false;
+            return WHITELIST.some(name => name === trimmed);
+        }
+
+        /** 获取匹配的白名单姓名（原样返回） */
+        function getMatchedName(inputName) {
+            const trimmed = trimName(inputName);
+            if (!trimmed) return null;
+            const found = WHITELIST.find(name => name === trimmed);
+            return found || null;
+        }
+
+        /** 校验码是否匹配 */
+        function isCodeValid(inputCode) {
+            return inputCode.trim() === VALID_CODE;
+        }
+
+        // ======================== 认证逻辑 ========================
+
+ /** 检查本地存储是否已认证 */
+        function checkStoredAuth() {
+            try {
+                const stored = localStorage.getItem('grad_auth');
+                if (!stored) return false;
+                const data = JSON.parse(stored);
+                if (!data || typeof data !== 'object') return false;
+                if (!data.name || typeof data.name !== 'string') return false;
+                // 验证姓名仍然在白名单中（防止名单变更后失效）
+                if (!isNameValid(data.name)) {
+                    localStorage.removeItem('grad_auth');
+                    return false;
+                }
+                return data.name;
+            } catch (_) {
+                return false;
+            }
+        }
+
+        /** 执行认证 */
+        function performAuth(name, code) {
+            const trimmedName = trimName(name);
+            const trimmedCode = code.trim();
+
+            // 1. 校验姓名
+            if (!trimmedName) {
+                authError.textContent = '⚠️ 请填写你的真实姓名';
+                authError.className = 'error-msg';
+                return false;
+            }
+            if (!isNameValid(trimmedName)) {
+                authError.textContent = '❌ 姓名不在白名单中，请确认输入正确';
+                authError.className = 'error-msg';
+                return false;
+            }
+
+            // 2. 校验码
+            if (!trimmedCode) {
+                authError.textContent = '⚠️ 请填写校验码';
+                authError.className = 'error-msg';
+                return false;
+            }
+            if (!isCodeValid(trimmedCode)) {
+                authError.textContent = '❌ 校验码错误，请重新输入';
+                authError.className = 'error-msg';
+                return false;
+            }
+
+            // 3. 全部通过 ✅
+            const matchedName = getMatchedName(trimmedName);
+            // 保存到本地存储
+            try {
+                localStorage.setItem('grad_auth', JSON.stringify({ name: matchedName }));
+            } catch (_) { /* ignore */ }
+
+            // 显示主界面
+            showMainContent(matchedName);
+            authError.textContent = '';
+            authError.className = 'error-msg';
+            return true;
+        }
+
+        /** 显示主内容 */
+        function showMainContent(name) {
+            displayName.textContent = name;
+            authPage.style.display = 'none';
+            mainContent.style.display = 'block';
+            // 清空输入框（安全）
+            realNameInput.value = '';
+            verifyCodeInput.value = '';
+        }
+
+        /** 显示认证页面（登出） */
+        function showAuthPage() {
+            authPage.style.display = 'block';
+            mainContent.style.display = 'none';
+            authError.textContent = '';
+            authError.className = 'error-msg';
+            realNameInput.value = '';
+            verifyCodeInput.value = '';
+            realNameInput.focus();
+            try {
+                localStorage.removeItem('grad_auth');
+            } catch (_) { /* ignore */ }
+        }
+
+        // ======================== 认证表单提交 ========================
+
+        authForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = realNameInput.value;
+            const code = verifyCodeInput.value;
+            performAuth(name, code);
+        });
+
+        // ======================== 建议提交 ========================
+
+        suggestForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const content = suggestContent.value.trim();
+            if (!content) {
+                suggestFeedback.textContent = '✍️ 请写下你的建议或想说的话';
+                suggestFeedback.className = 'error-msg';
+                return;
+            }
+
+            // 检查邮箱是否被替换
+            if (SUGGEST_EMAIL === 'your-email@example.com') {
+                suggestFeedback.textContent = '⚠️ 请先配置接收建议的邮箱（见代码顶部 SUGGEST_EMAIL）';
+                suggestFeedback.className = 'error-msg';
+                return;
+            }
+
+            // 禁用按钮防止重复提交
+            const btn = suggestForm.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = '⏳ 提交中…';
+            suggestFeedback.textContent = '';
+            suggestFeedback.className = 'error-msg';
+
+            // 构造 formsubmit.co 的请求
+            const formData = new FormData();
+            formData.append('name', displayName.textContent || '匿名同学');
+            formData.append('_subject', `🎓 毕业典礼建议 - ${displayName.textContent || '同学'}`);
+            formData.append('message', content);
+            // 添加一个隐藏的 _captcha 启用验证码（可选）
+            formData.append('_captcha', 'false');
+
+            // 使用 fetch 发送到 formsubmit.co
+            fetch(`https://formsubmit.co/${SUGGEST_EMAIL}`, {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => {
+                    if (response.ok) {
+                        suggestFeedback.textContent = '✅ 建议已送达！感谢你的分享 💖';
+                        suggestFeedback.className = 'error-msg success';
+                        suggestContent.value = '';
+                    } else {
+                        throw new Error('服务器响应异常');
+                    }
+                })
+                .catch(err => {
+                    console.error('建议提交失败:', err);
+                    suggestFeedback.textContent = '⚠️ 提交失败，请稍后重试或联系管理员';
+                    suggestFeedback.className = 'error-msg';
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                });
+        });
+
+        // ======================== 初始化 ========================
+
+        (function init() {
+            // 检查是否已认证
+            const storedName = checkStoredAuth();
+            if (storedName) {
+                showMainContent(storedName);
+            } else {
+                showAuthPage();
+            }
+
+            // 如果建议邮箱未配置，在控制台给出提示
+            if (SUGGEST_EMAIL === 'your-email@example.com') {
+                console.warn('⚠️ [毕业典礼网站] 请将 SUGGEST_EMAIL 替换为你的真实邮箱，否则建议功能无法正常工作。');
+            }
+        })();
+
+        // 暴露一个「登出」函数方便调试（非必须）
+        window.__logout = showAuthPage;
+
+    })();
+</script>
+
+</body>
+</html>
