@@ -716,6 +716,47 @@ JavaScript 逻辑
                 return false;
             }
 
+            const matchedName = getMatchedName(trimmedName);
+            try {
+                localStorage.setItem('grad_auth', JSON.stringify({ name: matchedName }));
+            } catch (_) { /* ignore */ }
+
+            showMainContent(matchedName);
+            authError.textContent = '';
+            authError.className = 'error-msg';
+            return true;
+        }
+
+        function showMainContent(name) {
+            displayName.textContent = name;
+            authPage.style.display = 'none';
+            mainContent.style.display = 'block';
+            logoutWrapper.style.display = 'flex';   // 显示退出按钮
+            realNameInput.value = '';
+            verifyCodeInput.value = '';
+        }
+
+        function showAuthPage() {
+            authPage.style.display = 'block';
+            mainContent.style.display = 'none';
+            logoutWrapper.style.display = 'none';   // 隐藏退出按钮
+            authError.textContent = '';
+            authError.className = 'error-msg';
+            realNameInput.value = '';
+            verifyCodeInput.value = '';
+            try {
+                localStorage.removeItem('grad_auth');
+            } catch (_) { /* ignore */ }
+        }
+
+        // ======================== 退出登录 ========================
+        logoutBtn.addEventListener('click', function() {
+            if (confirm('确认退出登录吗？')) {
+                showAuthPage();
+            }
+        });
+
+        
             // 3. 全部通过 ✅
             const matchedName = getMatchedName(trimmedName);
             // 保存到本地存储
