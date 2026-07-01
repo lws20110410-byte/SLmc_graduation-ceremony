@@ -116,6 +116,35 @@
             position: relative;
             z-index: 1;
         }
+        /* ========== 退出按钮（独立放置，右上角） ========== */
+        .logout-wrapper {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+        }
+        .logout-btn {
+            background: rgba(200, 80, 80, 0.15);
+            border: 1px solid rgba(200, 80, 80, 0.25);
+            color: #b35a5a;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(4px);
+        }
+        .logout-btn:hover {
+            background: rgba(200, 80, 80, 0.25);
+            border-color: rgba(200, 80, 80, 0.5);
+            transform: scale(1.02);
+        }
+        .logout-btn:active {
+            transform: scale(0.96);
+        }
 
         /* ===================== 表单 ===================== */
         .form-group {
